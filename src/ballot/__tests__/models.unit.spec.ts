@@ -7,7 +7,7 @@ beforeEach(() => {
   Ballot.create('ballot', 3)
 })
 
-describe('Ballot', () => { 
+describe('Ballot', () => {
   it("verify name, chairperson and proposals", () => {
     let ballot: Ballot = Ballot.get()
     expect(ballot.name).toBe('ballot')
@@ -20,7 +20,7 @@ describe('Ballot', () => {
       Ballot.create("", 3)
     }).toThrow("Ballot name should not be blank")
   })
-  
+
   describe("register", () => {
     it("register non chairperson account", () => {
       VMContext.setPredecessor_account_id('voter1.test.user');
@@ -35,19 +35,19 @@ describe('Ballot', () => {
       }).toThrow("Chairperson cannot register")
     })
   })
-  
+
   describe("vote", () => {
     it("vote before register", () => {
       VMContext.setPredecessor_account_id('voter1.test.user');
       expect(() => {
-        Ballot.vote(0)
+        Ballot.vote(1)
       }).toThrow("Account is not registered")
     })
 
     it("try to vote again", () => {
       VMContext.setPredecessor_account_id('voter1.test.user');
       Ballot.register()
-      Ballot.vote(0)
+      Ballot.vote(1)
       expect(() => {
         Ballot.vote(1)
       }).toThrow("You have already voted!")
@@ -64,16 +64,16 @@ describe('Ballot', () => {
 
   describe("winningProposal", () => {
     it("return the winning proposal", () => {
-      Ballot.vote(1)
-      Ballot.vote(1)
+      Ballot.vote(2)
+      Ballot.vote(2)
       VMContext.setPredecessor_account_id('voter1.test.user');
       Ballot.register()
-      Ballot.vote(0)
+      Ballot.vote(1)
       VMContext.setPredecessor_account_id('voter2.test.user');
       Ballot.register()
-      Ballot.vote(2)
+      Ballot.vote(3)
 
-      expect(Ballot.winningProposal()).toBe(1)
+      expect(Ballot.winningProposal()).toBe(2)
     })
   })
 })

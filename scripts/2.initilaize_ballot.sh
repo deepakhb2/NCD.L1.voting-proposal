@@ -39,7 +39,7 @@ echo "    see example below (this may not work on Windows)"
 echo
 echo ---------------------------------------------------------
 echo 'export VOTER_ID=voter1.testnet'
-echo 'export VOTE=0'
+echo 'export VOTE=1'
 # uncomment this line for a useful hint when using the singleton style
 # echo "near call \$CONTRACT init --accountId \$CONTRACT"
 echo ---------------------------------------------------------

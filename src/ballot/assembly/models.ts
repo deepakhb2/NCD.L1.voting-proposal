@@ -28,7 +28,7 @@ export class Ballot {
   static get(): Ballot {
     return storage.getSome<Ballot>(BALLOT_KEY)
   }
-  
+
   static register(): void {
     let ballot: Ballot = this.get()
     assert(context.predecessor != ballot.chairperson, "Chairperson cannot register")
@@ -40,7 +40,7 @@ export class Ballot {
     let voter = voters.get(context.predecessor)
     assert(voter != null, "Account is not registered")
     assert(voter != null && !voter.voted, "You have already voted!")
-    assert(toProposal > -1 && toProposal < ballot.proposals, "Proposal is invalid")
+    assert(toProposal > 0 && toProposal <= ballot.proposals, "Proposal is invalid")
     if(voter) {
       voter.setVotes(voter.votes + 1)
       if(voter.votes == voter.weight) {
@@ -53,7 +53,7 @@ export class Ballot {
       proposal.voteCount = proposal.voteCount+1
       proposals.set(toProposal, proposal)
     } else {
-      proposals.set(toProposal, new Proposal(1)) 
+      proposals.set(toProposal, new Proposal(1))
     }
   }
 
@@ -79,7 +79,7 @@ export class Voter {
   constructor(
     public weight: i32,
     public voted: bool,
-  ) { 
+  ) {
     this.votes = 0
   }
 
