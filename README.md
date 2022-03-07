@@ -11,6 +11,10 @@ NEAR Ballot is a smart contract based where you can create ballot for multiple p
 5. Chairperson can vote for 2 proposals.
 6. Reveal the winner.
 
+Credits to two repositry from which I have re-used ReadMe and code structure:
+1. https://github.com/Learn-NEAR/starter--near-sdk-as
+2. https://github.com/Learn-NEAR/NCD.L1.sample--library
+
 📦 Installation
 ================
 
