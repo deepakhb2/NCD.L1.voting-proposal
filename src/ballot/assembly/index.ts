@@ -1,4 +1,4 @@
-import { storage, Context, logging } from "near-sdk-as"
+import { storage, logging } from "near-sdk-as"
 import { Ballot, BALLOT_KEY } from "./models"
 
 export function init(name: string, proposals: u32): void {

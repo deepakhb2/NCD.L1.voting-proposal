@@ -1,7 +1,6 @@
 import { VMContext } from "near-sdk-as";
 import { Ballot } from "../assembly/models";
 
-let ballot: Ballot;
 beforeEach(() => {
   VMContext.setPredecessor_account_id('chairperson.test.user');
   Ballot.create('ballot', 3)

@@ -1,4 +1,4 @@
-import { context, PersistentMap, PersistentSet, storage } from "near-sdk-as"
+import { context, PersistentMap, storage } from "near-sdk-as"
 
 export const BALLOT_KEY = "ballot"
 
